@@ -1,14 +1,12 @@
-from app.errors import VaccineError, NotWearingMaskError
+from app.errors import (VaccineError, NotWearingMaskError)
 from app.cafe import Cafe
 
 
-def go_to_cafe(friends: list, cafe: Cafe) -> str | None:
-    count = 0
+def go_to_cafe(friends: list[dict], cafe: Cafe) -> str | None:
     mask_to_buy = 0
     for friend in friends:
         try:
             cafe.visit_cafe(friend)
-            count += 1
         except VaccineError:
             return "All friends should be vaccinated"
         except NotWearingMaskError:
